@@ -120,34 +120,8 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         eventticket[_id - 1].owner = payable(address(this));
     }
 
-    function sendMoney(
-  uint256 _id
-  ) public payable {
-  
-  require(msg.value > 0, "Not enough ETH");
-
-  address payable seller = eventticket[_id].seller;
-  require(seller != address(0), "Wrong seller address");
-  
-  seller.transfer(msg.value);
-}
-
-    function sendViaTransfer(address payable _to) public payable {
-        // This function is no longer recommended for sending Ether.
-        _to.transfer(100);
-    }
-
-    function payRoyality(uint256 _royalityFee, address payable _to) internal {
-        (bool success1, ) = payable(_to).call{value: _royalityFee}("");
-        require(success1);
-    }
-
-    function prayRoyality(uint256 _royalityFee, address payable _to) public payable {
-        (bool success1, ) = payable(_to).call{value: _royalityFee}("");
-        require(success1);
-    }
     function buyTicketFromAttendee(uint256 _ticketId) 
-    external 
+    external
     payable
     {
         //require(eventticket[_ticketId - 1].availableForResell = true,"ticket not for sale");
@@ -155,12 +129,22 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         //address _seller = ownerOf(_ticketId);
         //require((msg.value >= _priceToPay),"not enough money");
 
-        //address seller = eventticket[_ticketId].seller;
+        address seller = eventticket[_ticketId].seller;
        // payable(_seller).transfer(_netPrice);
 
         _transfer(address(this), msg.sender, _ticketId);
-        //payable(seller).transfer(msg.value);
+        payable(seller).transfer(msg.value);
         eventticket[_ticketId - 1].availableForResell = false;
          
     }
+
+    function sendMoney(
+  uint256 _id
+  ) public payable {
+
+  address payable seller = payable(address(this));
+  
+  seller.transfer(msg.value);
+}
+
 }
