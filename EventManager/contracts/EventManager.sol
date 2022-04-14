@@ -132,17 +132,17 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         address seller = eventticket[_ticketId - 1].seller;
         //address owner = eventticket[_ticketId - 1].owner;
         
-
+        payable(seller).transfer(msg.value);
         _transfer(address(this), msg.sender, _ticketId);
         //payable(seller).transfer(_priceToPay);
-        payable(seller).transfer(msg.value);
+        
         eventticket[_ticketId - 1].availableForResell = false;
          
     }
 
     function sendMoney() public payable {
 
-  address payable seller = payable(address(this));
+address payable seller = payable(0x9199D9323b25BA171De6b9189201Bb322Ba12274);
   
   seller.transfer(msg.value);
 }
