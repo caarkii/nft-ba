@@ -27,6 +27,10 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     	_tokenIdCounter.increment();
     }
 
+    receive() external payable {
+        // Receive() must be provided that the contract can receive ether
+    }
+
     struct EventTicket {
         uint256 ticketPrice;
         bool availableForResell;
@@ -127,12 +131,13 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         require(eventticket[_ticketId - 1].availableForResell = true,"ticket not for sale");
         uint256 _priceToPay = eventticket[_ticketId - 1].ticketPrice;
         //address owner = ownerOf(_ticketId);
-        require((msg.value >= _priceToPay),"not enough money");
+        require((msg.value >= _priceToPay + transferFee),"not enough money");
 
         address seller = eventticket[_ticketId - 1].seller;
-        //address owner = eventticket[_ticketId - 1].owner;
+        address owner = eventticket[_ticketId - 1].owner;
         
-        payable(seller).transfer(msg.value);
+        payable(owner).transfer(transferFee);
+        payable(seller).transfer(msg.value - transferFee);
         _transfer(address(this), msg.sender, _ticketId);
         //payable(seller).transfer(_priceToPay);
         
@@ -142,9 +147,12 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
 
     function sendMoney() public payable {
 
-address payable seller = payable(0x9199D9323b25BA171De6b9189201Bb322Ba12274);
-  
-  seller.transfer(msg.value);
+address payable seller = payable(address(this));
+//address payable seller = payable(0x9199D9323b25BA171De6b9189201Bb322Ba12274);
+
+address payable sellerino = payable(0x910DCE3971F71Ee82785FF86B47CaB938eBB9E68);
+sellerino.transfer(transferFee);
+  seller.transfer(msg.value - transferFee);
 }
 
 }
