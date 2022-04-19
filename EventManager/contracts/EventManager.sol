@@ -39,10 +39,16 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     }
     EventTicket[] eventticket;
 
-    function safeMint(address to, string memory uri) public onlyOwner {
+    function safeMint(address to, string memory uri) public payable onlyOwner {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         require((maxTicket > tokenId),"There are no tickets left");
+        uint256 _priceToPay = ticketPrice;
+        require((msg.value >= _priceToPay),"not enough money");
+
+        address payable owner = payable(address(this));
+        owner.transfer(_priceToPay);
+
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
 
@@ -130,7 +136,6 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     {
         require(eventticket[_ticketId - 1].availableForResell = true,"ticket not for sale");
         uint256 _priceToPay = eventticket[_ticketId - 1].ticketPrice;
-        //address owner = ownerOf(_ticketId);
         require((msg.value >= _priceToPay + transferFee),"not enough money");
 
         address seller = eventticket[_ticketId - 1].seller;
@@ -139,7 +144,6 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         payable(owner).transfer(transferFee);
         payable(seller).transfer(msg.value - transferFee);
         _transfer(address(this), msg.sender, _ticketId);
-        //payable(seller).transfer(_priceToPay);
         
         eventticket[_ticketId - 1].availableForResell = false;
          
