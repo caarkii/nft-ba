@@ -13,14 +13,12 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     Counters.Counter private _tokenIdCounter;
 
     // Values which are set at the deployment
-    // These are changable for each event
+    // These can be configured for each event
     uint64 public maxTicket = 5;
     uint256 public ticketPrice = 100;
     uint public ticketCount = 1;
     uint64 public transferFee = 10;
-    address payable withdrawalAddress = payable(0x910DCE3971F71Ee82785FF86B47CaB938eBB9E68);
-    
-
+    uint64 public maxResellTimes = 3;
 
     constructor() ERC721("EventManager", "EM") {
     	//TokenID startet bei 1 und nicht bei 0
@@ -33,12 +31,14 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
 
     struct EventTicket {
         uint256 ticketPrice;
+        uint256 numberOfResell;
         bool availableForResell;
         address payable seller;
         address payable owner;
     }
     EventTicket[] eventticket;
 
+    //To buy a ticket from the primary market
     function safeMint(address to, string memory uri) public payable onlyOwner {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
@@ -54,6 +54,7 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
 
         EventTicket memory _eventticket = EventTicket({
             ticketPrice: ticketPrice,
+            numberOfResell: 0,
             availableForResell: bool(false),
             seller: payable(msg.sender),
             owner: payable(address(this))
@@ -64,7 +65,6 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     
 
     // The following functions are overrides required by Solidity.
-
     function _beforeTokenTransfer(address from, address to, uint256 tokenId)
         internal
         override(ERC721, ERC721Enumerable)
@@ -94,18 +94,20 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         return super.supportsInterface(interfaceId);
     }
 
-    // Getter
+    // Getter functions
     function getTicket(uint256 _id) 
         external 
         view 
-        returns (uint256 price, bool availableForResell, address seller, address owner)
+        returns (uint256 price, uint64 resellTimes, bool availableForResell, address seller, address owner)
     {
         price = uint256(eventticket[_id - 1].ticketPrice);
+        resellTimes = uint64(eventticket[_id - 1].numberOfResell);
         availableForResell = bool(eventticket[_id - 1].availableForResell);
         seller = address(eventticket[_id - 1].seller);
         owner = address(eventticket[_id - 1].owner);
     }
 
+    // Get the balance of an account
     function getMoney(address _ad) 
         external 
         view 
@@ -114,15 +116,17 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         balance = uint256(_ad.balance);
     }
 
+    // Get the balance of the smart-contract
     function getBalanceOfContract() public view returns (uint256) {
         return address(this).balance;
     }
-    // Setter
 
+    // Setting a ticket for resale
     function setForResale(uint256 _id, uint256 _newPrice) 
         external  
     {
-        //require((ownerOf(_id) == msg.sender),"You do not have the permission to change that ticket");
+        require((ownerOf(_id) == msg.sender),"No Permission");
+        require((eventticket[_id - 1].numberOfResell < maxResellTimes), "Sold too many times.");
         transferFrom(msg.sender, address(this), _id);
         eventticket[_id - 1].availableForResell = true;
         eventticket[_id - 1].ticketPrice = _newPrice;
@@ -130,7 +134,8 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         eventticket[_id - 1].owner = payable(address(this));
     }
 
-    function buyTicketFromAttendee(uint256 _ticketId) 
+    // Buying a ticket from the secondary market place
+    function buyTicketSecondary(uint256 _ticketId) 
     external
     payable
     {
@@ -146,17 +151,8 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         _transfer(address(this), msg.sender, _ticketId);
         
         eventticket[_ticketId - 1].availableForResell = false;
+        eventticket[_ticketId - 1].numberOfResell += 1;
          
     }
-
-    function sendMoney() public payable {
-
-address payable seller = payable(address(this));
-//address payable seller = payable(0x9199D9323b25BA171De6b9189201Bb322Ba12274);
-
-address payable sellerino = payable(0x910DCE3971F71Ee82785FF86B47CaB938eBB9E68);
-sellerino.transfer(transferFee);
-  seller.transfer(msg.value - transferFee);
-}
 
 }
