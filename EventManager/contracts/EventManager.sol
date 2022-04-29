@@ -26,7 +26,7 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     }
 
     receive() external payable {
-        // Receive() must be provided that the contract can receive ether
+        // This function must be provided to be able to receive funds
     }
 
     struct EventTicket {
