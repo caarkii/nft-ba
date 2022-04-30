@@ -135,23 +135,23 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     }
 
     // Buying a ticket from the secondary market place
-    function buyTicketSecondary(uint256 _ticketId) 
+    function buyTicketSecondary(uint256 _id) 
     external
     payable
     {
-        require(eventticket[_ticketId - 1].availableForResell = true,"ticket not for sale");
-        uint256 _priceToPay = eventticket[_ticketId - 1].ticketPrice;
+        require(eventticket[_id - 1].availableForResell = true,"ticket not for sale");
+        uint256 _priceToPay = eventticket[_id - 1].ticketPrice;
         require((msg.value >= _priceToPay + transferFee),"not enough money");
 
-        address seller = eventticket[_ticketId - 1].seller;
-        address owner = eventticket[_ticketId - 1].owner;
+        address seller = eventticket[_id - 1].seller;
+        address owner = eventticket[_id - 1].owner;
         
         payable(owner).transfer(transferFee);
         payable(seller).transfer(msg.value - transferFee);
-        _transfer(address(this), msg.sender, _ticketId);
+        _transfer(address(this), msg.sender, _id);
         
-        eventticket[_ticketId - 1].availableForResell = false;
-        eventticket[_ticketId - 1].numberOfResell += 1;
+        eventticket[_id - 1].availableForResell = false;
+        eventticket[_id - 1].numberOfResell += 1;
          
     }
 
