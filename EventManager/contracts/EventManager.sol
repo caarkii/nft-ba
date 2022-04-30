@@ -44,7 +44,7 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         _tokenIdCounter.increment();
         require((maxTicket > tokenId),"There are no tickets left");
         uint256 _priceToPay = ticketPrice;
-        require((msg.value >= _priceToPay),"not enough money");
+        require((msg.value >= _priceToPay),"There is not enough funds");
 
         address payable owner = payable(address(this));
         owner.transfer(_priceToPay);
@@ -125,8 +125,8 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     function setForResale(uint256 _id, uint256 _newPrice) 
         external  
     {
-        require((ownerOf(_id) == msg.sender),"No Permission");
-        require((eventticket[_id - 1].numberOfResell < maxResellTimes), "Sold too many times.");
+        require((ownerOf(_id) == msg.sender),"No Permission to sell this tickt");
+        require((eventticket[_id - 1].numberOfResell < maxResellTimes), "Maximum number of resales reached");
         transferFrom(msg.sender, address(this), _id);
         eventticket[_id - 1].availableForResell = true;
         eventticket[_id - 1].ticketPrice = _newPrice;
