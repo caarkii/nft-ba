@@ -16,6 +16,7 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     // These can be configured for each event
     uint64 public maxTicket = 5;
     uint256 public ticketPrice = 100;
+    uint256 public maxTicketPrice = 150;
     uint public ticketCount = 1;
     uint64 public transferFee = 10;
     uint64 public maxResellTimes = 3;
@@ -126,7 +127,8 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         external  
     {
         require((ownerOf(_id) == msg.sender),"No Permission to sell this tickt");
-        require((eventticket[_id - 1].numberOfResell < maxResellTimes), "Maximum number of resales reached");
+        require((maxTicketPrice > _newPrice),"New Price is exceeds maximum ticket price");
+        require((eventticket[_id - 1].numberOfResell < maxResellTimes),"Maximum number of resales reached");
         transferFrom(msg.sender, address(this), _id);
         eventticket[_id - 1].availableForResell = true;
         eventticket[_id - 1].ticketPrice = _newPrice;
