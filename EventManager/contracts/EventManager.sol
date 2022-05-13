@@ -122,7 +122,7 @@ contract EventManager is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     }
 
     // Setting a ticket for resale
-    function setForResale(uint256 _id, uint256 _newPrice) 
+    function offerTicketOnMarket(uint256 _id, uint256 _newPrice) 
         external  
     {
         require((ownerOf(_id) == msg.sender),"No Permission to sell this tickt");
