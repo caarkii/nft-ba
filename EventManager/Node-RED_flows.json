@@ -1,0 +1,1272 @@
+[
+    {
+        "id": "50105bc137349796",
+        "type": "tab",
+        "label": "ERC-721 Function Calls",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cd8d6a827ec10ca2",
+        "type": "contract-call",
+        "z": "50105bc137349796",
+        "name": "safeMint()",
+        "smartContract": "3065fb7c2045d54e",
+        "contractFunction": "safeMint",
+        "senderAccount": "cb6fbf296cf8ec9c",
+        "readonlyFunction": false,
+        "weiTransfer": "1000",
+        "onlyEstimateGas": false,
+        "useEstimatedGasLimit": true,
+        "gasLimit": "",
+        "usePreviousBlocksGasPrice": true,
+        "gasPrice": "",
+        "fetchFullTransaction": false,
+        "x": 500,
+        "y": 200,
+        "wires": [
+            [],
+            [
+                "5816dcc619214aed"
+            ]
+        ]
+    },
+    {
+        "id": "7df4fba1948e9545",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "TokenID \"1\"",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "str",
+        "x": 110,
+        "y": 520,
+        "wires": [
+            [
+                "43aff9bcebdc0854"
+            ]
+        ]
+    },
+    {
+        "id": "43aff9bcebdc0854",
+        "type": "contract-call",
+        "z": "50105bc137349796",
+        "name": "ownerOf()",
+        "smartContract": "3065fb7c2045d54e",
+        "contractFunction": "ownerOf",
+        "senderAccount": "cb6fbf296cf8ec9c",
+        "readonlyFunction": true,
+        "weiTransfer": "",
+        "onlyEstimateGas": false,
+        "useEstimatedGasLimit": true,
+        "gasLimit": "",
+        "usePreviousBlocksGasPrice": true,
+        "gasPrice": "",
+        "fetchFullTransaction": false,
+        "x": 320,
+        "y": 600,
+        "wires": [
+            [],
+            [
+                "6ee8914463cabadb"
+            ]
+        ]
+    },
+    {
+        "id": "59f229c3bf680cbf",
+        "type": "comment",
+        "z": "50105bc137349796",
+        "name": "mint new NFT with random URI",
+        "info": "",
+        "x": 150,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ea6a8ef7f52065eb",
+        "type": "comment",
+        "z": "50105bc137349796",
+        "name": "read-only function calls",
+        "info": "",
+        "x": 120,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "69e2b71d0dd5ef7a",
+        "type": "debug",
+        "z": "50105bc137349796",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 830,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "bab95e459d83ebb4",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 740,
+        "wires": [
+            [
+                "e1dd5b4e7710b6ae"
+            ]
+        ]
+    },
+    {
+        "id": "e1dd5b4e7710b6ae",
+        "type": "contract-call",
+        "z": "50105bc137349796",
+        "name": "name()",
+        "smartContract": "3065fb7c2045d54e",
+        "contractFunction": "name",
+        "senderAccount": "c058b466e00264ad",
+        "readonlyFunction": true,
+        "weiTransfer": "",
+        "onlyEstimateGas": false,
+        "useEstimatedGasLimit": true,
+        "gasLimit": "",
+        "usePreviousBlocksGasPrice": true,
+        "gasPrice": "",
+        "fetchFullTransaction": false,
+        "x": 280,
+        "y": 740,
+        "wires": [
+            [],
+            [
+                "a8d5efa5086a0c93"
+            ]
+        ]
+    },
+    {
+        "id": "a8d5efa5086a0c93",
+        "type": "debug",
+        "z": "50105bc137349796",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "8ffbe75c01a83aa3",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 800,
+        "wires": [
+            [
+                "e88af769ca03d909"
+            ]
+        ]
+    },
+    {
+        "id": "e88af769ca03d909",
+        "type": "contract-call",
+        "z": "50105bc137349796",
+        "name": "symbol()",
+        "smartContract": "3065fb7c2045d54e",
+        "contractFunction": "symbol",
+        "senderAccount": "c058b466e00264ad",
+        "readonlyFunction": true,
+        "weiTransfer": "",
+        "onlyEstimateGas": false,
+        "useEstimatedGasLimit": true,
+        "gasLimit": "",
+        "usePreviousBlocksGasPrice": true,
+        "gasPrice": "",
+        "fetchFullTransaction": false,
+        "x": 280,
+        "y": 800,
+        "wires": [
+            [],
+            [
+                "ffdcdc6e7a695c71"
+            ]
+        ]
+    },
+    {
+        "id": "ffdcdc6e7a695c71",
+        "type": "debug",
+        "z": "50105bc137349796",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "34915b510b6b4844",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "Account 1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0xDb7c83d499787E6b7660C961F8a9999E3C395AdE",
+        "payloadType": "str",
+        "x": 100,
+        "y": 920,
+        "wires": [
+            [
+                "de8224018d462fc8"
+            ]
+        ]
+    },
+    {
+        "id": "de8224018d462fc8",
+        "type": "contract-call",
+        "z": "50105bc137349796",
+        "name": "balanceOf()",
+        "smartContract": "3065fb7c2045d54e",
+        "contractFunction": "balanceOf",
+        "senderAccount": "c058b466e00264ad",
+        "readonlyFunction": true,
+        "weiTransfer": "",
+        "onlyEstimateGas": false,
+        "useEstimatedGasLimit": true,
+        "gasLimit": "",
+        "usePreviousBlocksGasPrice": true,
+        "gasPrice": "",
+        "fetchFullTransaction": false,
+        "x": 290,
+        "y": 960,
+        "wires": [
+            [],
+            [
+                "b8061bc0a13aa4ce"
+            ]
+        ]
+    },
+    {
+        "id": "6b4f0b761b119485",
+        "type": "debug",
+        "z": "50105bc137349796",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "c1ad58fb1b3e9cd7",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "TokenID \"2\"",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2",
+        "payloadType": "str",
+        "x": 110,
+        "y": 560,
+        "wires": [
+            [
+                "43aff9bcebdc0854"
+            ]
+        ]
+    },
+    {
+        "id": "d21a4719a697ad20",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "TokenID \"3\"",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "3",
+        "payloadType": "str",
+        "x": 110,
+        "y": 600,
+        "wires": [
+            [
+                "43aff9bcebdc0854"
+            ]
+        ]
+    },
+    {
+        "id": "f705ed3a54b811d6",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "Account 2",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0x9199D9323b25BA171De6b9189201Bb322Ba12274",
+        "payloadType": "str",
+        "x": 100,
+        "y": 960,
+        "wires": [
+            [
+                "de8224018d462fc8"
+            ]
+        ]
+    },
+    {
+        "id": "5ca1929edbb59977",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "Account 3",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0x47Be861A7E5d9b41Fd797298e68E9c7b5F848BEf",
+        "payloadType": "str",
+        "x": 100,
+        "y": 1000,
+        "wires": [
+            [
+                "de8224018d462fc8"
+            ]
+        ]
+    },
+    {
+        "id": "de1f02ebda2f06af",
+        "type": "comment",
+        "z": "50105bc137349796",
+        "name": "ganache mnemonic (click me)",
+        "info": "siren suit gift pill insect build expand decade valid roof blind museum",
+        "x": 140,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "ced923b2a287ed1c",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "TokenID \"4\"",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "4",
+        "payloadType": "str",
+        "x": 110,
+        "y": 640,
+        "wires": [
+            [
+                "43aff9bcebdc0854"
+            ]
+        ]
+    },
+    {
+        "id": "d28089b7abfda89b",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "TokenID \"5\"",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5",
+        "payloadType": "str",
+        "x": 110,
+        "y": 680,
+        "wires": [
+            [
+                "43aff9bcebdc0854"
+            ]
+        ]
+    },
+    {
+        "id": "f214eaec25b29164",
+        "type": "function",
+        "z": "50105bc137349796",
+        "name": "add random URI",
+        "func": "var account = msg.payload\nfunction random(length) {\n    var result = '';\n    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\n    var charactersLength = characters.length;\n    for ( var i = 0; i < length; i++ ) {\n      result += characters.charAt(Math.floor(Math.random() * charactersLength));\n   } return result;\n}\nvar uri = \"https://ipfs.io/ipfs/\" + random(46)\nmsg.payload = [account, uri]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 200,
+        "wires": [
+            [
+                "cd8d6a827ec10ca2"
+            ]
+        ]
+    },
+    {
+        "id": "b05790513e520991",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "Account 1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0xDb7c83d499787E6b7660C961F8a9999E3C395AdE",
+        "payloadType": "str",
+        "x": 100,
+        "y": 160,
+        "wires": [
+            [
+                "f214eaec25b29164"
+            ]
+        ]
+    },
+    {
+        "id": "66755f8ac47fb2eb",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "Account 2",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0x9199D9323b25BA171De6b9189201Bb322Ba12274",
+        "payloadType": "str",
+        "x": 100,
+        "y": 200,
+        "wires": [
+            [
+                "f214eaec25b29164"
+            ]
+        ]
+    },
+    {
+        "id": "b8876051eddb6c93",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "Account 3",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0x47Be861A7E5d9b41Fd797298e68E9c7b5F848BEf",
+        "payloadType": "str",
+        "x": 100,
+        "y": 240,
+        "wires": [
+            [
+                "f214eaec25b29164"
+            ]
+        ]
+    },
+    {
+        "id": "b8061bc0a13aa4ce",
+        "type": "function",
+        "z": "50105bc137349796",
+        "name": "",
+        "func": "msg.payload = \"Amount of NFT(s): \" + msg.payload\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 960,
+        "wires": [
+            [
+                "6b4f0b761b119485"
+            ]
+        ]
+    },
+    {
+        "id": "6ee8914463cabadb",
+        "type": "function",
+        "z": "50105bc137349796",
+        "name": "Enumerate Account Nr.",
+        "func": "if (msg.payload == \"0xDb7c83d499787E6b7660C961F8a9999E3C395AdE\") {\n    msg.payload = \"Account 1\"\n} else if (msg.payload == \"0x9199D9323b25BA171De6b9189201Bb322Ba12274\") {\n    msg.payload = \"Account 2\"\n} else if (msg.payload == \"0x47Be861A7E5d9b41Fd797298e68E9c7b5F848BEf\") {\n    msg.payload = \"Account 3\"\n} else {\n    msg.payload = \"Contract\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 600,
+        "wires": [
+            [
+                "69e2b71d0dd5ef7a"
+            ]
+        ]
+    },
+    {
+        "id": "4ded42484ed56c2b",
+        "type": "comment",
+        "z": "50105bc137349796",
+        "name": "Info",
+        "info": "This flow provides a playground to test all implemented ERC-721 Functions. Make sure to mint some NFTs before trying the functions!",
+        "x": 350,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "d9969ab328f28e59",
+        "type": "comment",
+        "z": "50105bc137349796",
+        "name": "approvals",
+        "info": "",
+        "x": 80,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "5bae48a73d195c47",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "Approve SmartContract for Ticket 1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[\"0xC4b58f1d4B9efaE09d8E220F1F0b099f7f63bb0D\",1]",
+        "payloadType": "json",
+        "x": 180,
+        "y": 380,
+        "wires": [
+            [
+                "ee5592f86ad36d4c"
+            ]
+        ]
+    },
+    {
+        "id": "0e8d0dead0442ab9",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 860,
+        "wires": [
+            [
+                "5e2e94776da3db66"
+            ]
+        ]
+    },
+    {
+        "id": "5e2e94776da3db66",
+        "type": "contract-call",
+        "z": "50105bc137349796",
+        "name": "totalSupply()",
+        "smartContract": "3065fb7c2045d54e",
+        "contractFunction": "totalSupply",
+        "senderAccount": "c058b466e00264ad",
+        "readonlyFunction": true,
+        "weiTransfer": "",
+        "onlyEstimateGas": false,
+        "useEstimatedGasLimit": true,
+        "gasLimit": "",
+        "usePreviousBlocksGasPrice": true,
+        "gasPrice": "",
+        "fetchFullTransaction": false,
+        "x": 290,
+        "y": 860,
+        "wires": [
+            [],
+            [
+                "28747ea2a0a30e94"
+            ]
+        ]
+    },
+    {
+        "id": "28747ea2a0a30e94",
+        "type": "debug",
+        "z": "50105bc137349796",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "5816dcc619214aed",
+        "type": "debug",
+        "z": "50105bc137349796",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "2c6970c2f4daa369",
+        "type": "debug",
+        "z": "50105bc137349796",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "summary",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "89d3e6b486245487",
+        "type": "comment",
+        "z": "50105bc137349796",
+        "name": "Smart Contract: Test Token",
+        "info": "",
+        "x": 550,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "63120410d2fc54e9",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "TokenID \"2\"",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2",
+        "payloadType": "str",
+        "x": 110,
+        "y": 1160,
+        "wires": [
+            [
+                "3f73d9726d58dac4"
+            ]
+        ]
+    },
+    {
+        "id": "3f73d9726d58dac4",
+        "type": "contract-call",
+        "z": "50105bc137349796",
+        "name": "getTicket()",
+        "smartContract": "3065fb7c2045d54e",
+        "contractFunction": "getTicket",
+        "senderAccount": "cb6fbf296cf8ec9c",
+        "readonlyFunction": true,
+        "weiTransfer": "",
+        "onlyEstimateGas": false,
+        "useEstimatedGasLimit": true,
+        "gasLimit": "",
+        "usePreviousBlocksGasPrice": true,
+        "gasPrice": "",
+        "fetchFullTransaction": false,
+        "x": 310,
+        "y": 1160,
+        "wires": [
+            [],
+            [
+                "e1180ff0f71d0fca"
+            ]
+        ]
+    },
+    {
+        "id": "e1180ff0f71d0fca",
+        "type": "debug",
+        "z": "50105bc137349796",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "ec190107d2cc3af5",
+        "type": "comment",
+        "z": "50105bc137349796",
+        "name": "Getting the Tickets out of the struct",
+        "info": "",
+        "x": 160,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "ee7de8c159a55b02",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "TokenID \"3\"",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "3",
+        "payloadType": "str",
+        "x": 110,
+        "y": 1200,
+        "wires": [
+            [
+                "3f73d9726d58dac4"
+            ]
+        ]
+    },
+    {
+        "id": "33530d210e35da3a",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "TokenID \"1\"",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "str",
+        "x": 110,
+        "y": 1120,
+        "wires": [
+            [
+                "3f73d9726d58dac4"
+            ]
+        ]
+    },
+    {
+        "id": "e315facedb89a7fd",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "Ticket 1 for Sale",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[1,140]",
+        "payloadType": "json",
+        "x": 120,
+        "y": 1560,
+        "wires": [
+            [
+                "7491b998ca2c2687"
+            ]
+        ]
+    },
+    {
+        "id": "1215c5667b53847d",
+        "type": "comment",
+        "z": "50105bc137349796",
+        "name": "Secondary Market",
+        "info": "",
+        "x": 110,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "7491b998ca2c2687",
+        "type": "contract-call",
+        "z": "50105bc137349796",
+        "name": "offerTicketOnMarket()",
+        "smartContract": "3065fb7c2045d54e",
+        "contractFunction": "offerTicketOnMarket",
+        "senderAccount": "cb6fbf296cf8ec9c",
+        "readonlyFunction": false,
+        "weiTransfer": "",
+        "onlyEstimateGas": false,
+        "useEstimatedGasLimit": true,
+        "gasLimit": "",
+        "usePreviousBlocksGasPrice": true,
+        "gasPrice": "",
+        "fetchFullTransaction": false,
+        "x": 340,
+        "y": 1560,
+        "wires": [
+            [],
+            [
+                "aefde15913dbf574"
+            ]
+        ]
+    },
+    {
+        "id": "aefde15913dbf574",
+        "type": "debug",
+        "z": "50105bc137349796",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 1560,
+        "wires": []
+    },
+    {
+        "id": "dd2ae8cc78ece7f2",
+        "type": "contract-call",
+        "z": "50105bc137349796",
+        "name": "getMoney()",
+        "smartContract": "3065fb7c2045d54e",
+        "contractFunction": "getMoney",
+        "senderAccount": "cb6fbf296cf8ec9c",
+        "readonlyFunction": true,
+        "weiTransfer": "",
+        "onlyEstimateGas": false,
+        "useEstimatedGasLimit": true,
+        "gasLimit": "",
+        "usePreviousBlocksGasPrice": true,
+        "gasPrice": "",
+        "fetchFullTransaction": false,
+        "x": 310,
+        "y": 1400,
+        "wires": [
+            [],
+            [
+                "0d20eef9ff5e3871"
+            ]
+        ]
+    },
+    {
+        "id": "0d20eef9ff5e3871",
+        "type": "debug",
+        "z": "50105bc137349796",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "b963902a0a15c393",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "Account 1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0xDb7c83d499787E6b7660C961F8a9999E3C395AdE",
+        "payloadType": "str",
+        "x": 100,
+        "y": 1380,
+        "wires": [
+            [
+                "dd2ae8cc78ece7f2"
+            ]
+        ]
+    },
+    {
+        "id": "2912f00c1d31e56f",
+        "type": "contract-call",
+        "z": "50105bc137349796",
+        "name": "getBalanceOfContract()",
+        "smartContract": "3065fb7c2045d54e",
+        "contractFunction": "getBalanceOfContract",
+        "senderAccount": "cb6fbf296cf8ec9c",
+        "readonlyFunction": true,
+        "weiTransfer": "",
+        "onlyEstimateGas": false,
+        "useEstimatedGasLimit": true,
+        "gasLimit": "",
+        "usePreviousBlocksGasPrice": true,
+        "gasPrice": "",
+        "fetchFullTransaction": false,
+        "x": 350,
+        "y": 1340,
+        "wires": [
+            [],
+            [
+                "0ed0a6534b377ea1"
+            ]
+        ]
+    },
+    {
+        "id": "0ed0a6534b377ea1",
+        "type": "debug",
+        "z": "50105bc137349796",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "50a863c63328c78e",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "balancecontract",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 125,
+        "y": 1338,
+        "wires": [
+            [
+                "2912f00c1d31e56f"
+            ]
+        ]
+    },
+    {
+        "id": "b57dd04176fa0232",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "buyTicket",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 100,
+        "y": 1620,
+        "wires": [
+            [
+                "429e07cb46c77bb3"
+            ]
+        ]
+    },
+    {
+        "id": "429e07cb46c77bb3",
+        "type": "contract-call",
+        "z": "50105bc137349796",
+        "name": "buyTicketSecondary()",
+        "smartContract": "3065fb7c2045d54e",
+        "contractFunction": "buyTicketSecondary",
+        "senderAccount": "3e41d6c50f62968a",
+        "readonlyFunction": false,
+        "weiTransfer": "100000000000000000",
+        "onlyEstimateGas": false,
+        "useEstimatedGasLimit": false,
+        "gasLimit": "100000000",
+        "usePreviousBlocksGasPrice": false,
+        "gasPrice": "1000000000",
+        "fetchFullTransaction": false,
+        "x": 340,
+        "y": 1620,
+        "wires": [
+            [],
+            [
+                "20f9d859e0824171"
+            ]
+        ]
+    },
+    {
+        "id": "20f9d859e0824171",
+        "type": "debug",
+        "z": "50105bc137349796",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "c16077cd99ab052b",
+        "type": "inject",
+        "z": "50105bc137349796",
+        "name": "Account 2",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0x9199D9323b25BA171De6b9189201Bb322Ba12274",
+        "payloadType": "str",
+        "x": 100,
+        "y": 1420,
+        "wires": [
+            [
+                "dd2ae8cc78ece7f2"
+            ]
+        ]
+    },
+    {
+        "id": "ee5592f86ad36d4c",
+        "type": "contract-call",
+        "z": "50105bc137349796",
+        "name": "approve()",
+        "smartContract": "3065fb7c2045d54e",
+        "contractFunction": "approve",
+        "senderAccount": "cb6fbf296cf8ec9c",
+        "readonlyFunction": false,
+        "weiTransfer": "",
+        "onlyEstimateGas": false,
+        "useEstimatedGasLimit": true,
+        "gasLimit": "",
+        "usePreviousBlocksGasPrice": true,
+        "gasPrice": "",
+        "fetchFullTransaction": false,
+        "x": 460,
+        "y": 380,
+        "wires": [
+            [],
+            [
+                "2c6970c2f4daa369"
+            ]
+        ]
+    },
+    {
+        "id": "f5eaee8b3e549b4e",
+        "type": "comment",
+        "z": "50105bc137349796",
+        "name": "Get Balances",
+        "info": "",
+        "x": 90,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "3065fb7c2045d54e",
+        "type": "smart-contract",
+        "name": "EventManager",
+        "ethereumClient": "41e930fe9f29b141",
+        "address": "0xC4b58f1d4B9efaE09d8E220F1F0b099f7f63bb0D",
+        "abi": "[     {       \"inputs\": [],       \"stateMutability\": \"nonpayable\",       \"type\": \"constructor\"     },     {       \"anonymous\": false,       \"inputs\": [         {           \"indexed\": true,           \"internalType\": \"address\",           \"name\": \"owner\",           \"type\": \"address\"         },         {           \"indexed\": true,           \"internalType\": \"address\",           \"name\": \"approved\",           \"type\": \"address\"         },         {           \"indexed\": true,           \"internalType\": \"uint256\",           \"name\": \"tokenId\",           \"type\": \"uint256\"         }       ],       \"name\": \"Approval\",       \"type\": \"event\"     },     {       \"anonymous\": false,       \"inputs\": [         {           \"indexed\": true,           \"internalType\": \"address\",           \"name\": \"owner\",           \"type\": \"address\"         },         {           \"indexed\": true,           \"internalType\": \"address\",           \"name\": \"operator\",           \"type\": \"address\"         },         {           \"indexed\": false,           \"internalType\": \"bool\",           \"name\": \"approved\",           \"type\": \"bool\"         }       ],       \"name\": \"ApprovalForAll\",       \"type\": \"event\"     },     {       \"anonymous\": false,       \"inputs\": [         {           \"indexed\": true,           \"internalType\": \"address\",           \"name\": \"previousOwner\",           \"type\": \"address\"         },         {           \"indexed\": true,           \"internalType\": \"address\",           \"name\": \"newOwner\",           \"type\": \"address\"         }       ],       \"name\": \"OwnershipTransferred\",       \"type\": \"event\"     },     {       \"anonymous\": false,       \"inputs\": [         {           \"indexed\": true,           \"internalType\": \"address\",           \"name\": \"from\",           \"type\": \"address\"         },         {           \"indexed\": true,           \"internalType\": \"address\",           \"name\": \"to\",           \"type\": \"address\"         },         {           \"indexed\": true,           \"internalType\": \"uint256\",           \"name\": \"tokenId\",           \"type\": \"uint256\"         }       ],       \"name\": \"Transfer\",       \"type\": \"event\"     },     {       \"inputs\": [         {           \"internalType\": \"address\",           \"name\": \"to\",           \"type\": \"address\"         },         {           \"internalType\": \"uint256\",           \"name\": \"tokenId\",           \"type\": \"uint256\"         }       ],       \"name\": \"approve\",       \"outputs\": [],       \"stateMutability\": \"nonpayable\",       \"type\": \"function\"     },     {       \"inputs\": [         {           \"internalType\": \"address\",           \"name\": \"owner\",           \"type\": \"address\"         }       ],       \"name\": \"balanceOf\",       \"outputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"\",           \"type\": \"uint256\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"tokenId\",           \"type\": \"uint256\"         }       ],       \"name\": \"getApproved\",       \"outputs\": [         {           \"internalType\": \"address\",           \"name\": \"\",           \"type\": \"address\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [         {           \"internalType\": \"address\",           \"name\": \"owner\",           \"type\": \"address\"         },         {           \"internalType\": \"address\",           \"name\": \"operator\",           \"type\": \"address\"         }       ],       \"name\": \"isApprovedForAll\",       \"outputs\": [         {           \"internalType\": \"bool\",           \"name\": \"\",           \"type\": \"bool\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [],       \"name\": \"maxResellTimes\",       \"outputs\": [         {           \"internalType\": \"uint64\",           \"name\": \"\",           \"type\": \"uint64\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [],       \"name\": \"maxTicket\",       \"outputs\": [         {           \"internalType\": \"uint64\",           \"name\": \"\",           \"type\": \"uint64\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [],       \"name\": \"maxTicketPrice\",       \"outputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"\",           \"type\": \"uint256\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [],       \"name\": \"name\",       \"outputs\": [         {           \"internalType\": \"string\",           \"name\": \"\",           \"type\": \"string\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [],       \"name\": \"owner\",       \"outputs\": [         {           \"internalType\": \"address\",           \"name\": \"\",           \"type\": \"address\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"tokenId\",           \"type\": \"uint256\"         }       ],       \"name\": \"ownerOf\",       \"outputs\": [         {           \"internalType\": \"address\",           \"name\": \"\",           \"type\": \"address\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [],       \"name\": \"renounceOwnership\",       \"outputs\": [],       \"stateMutability\": \"nonpayable\",       \"type\": \"function\"     },     {       \"inputs\": [         {           \"internalType\": \"address\",           \"name\": \"from\",           \"type\": \"address\"         },         {           \"internalType\": \"address\",           \"name\": \"to\",           \"type\": \"address\"         },         {           \"internalType\": \"uint256\",           \"name\": \"tokenId\",           \"type\": \"uint256\"         }       ],       \"name\": \"safeTransferFrom\",       \"outputs\": [],       \"stateMutability\": \"nonpayable\",       \"type\": \"function\"     },     {       \"inputs\": [         {           \"internalType\": \"address\",           \"name\": \"from\",           \"type\": \"address\"         },         {           \"internalType\": \"address\",           \"name\": \"to\",           \"type\": \"address\"         },         {           \"internalType\": \"uint256\",           \"name\": \"tokenId\",           \"type\": \"uint256\"         },         {           \"internalType\": \"bytes\",           \"name\": \"_data\",           \"type\": \"bytes\"         }       ],       \"name\": \"safeTransferFrom\",       \"outputs\": [],       \"stateMutability\": \"nonpayable\",       \"type\": \"function\"     },     {       \"inputs\": [         {           \"internalType\": \"address\",           \"name\": \"operator\",           \"type\": \"address\"         },         {           \"internalType\": \"bool\",           \"name\": \"approved\",           \"type\": \"bool\"         }       ],       \"name\": \"setApprovalForAll\",       \"outputs\": [],       \"stateMutability\": \"nonpayable\",       \"type\": \"function\"     },     {       \"inputs\": [],       \"name\": \"symbol\",       \"outputs\": [         {           \"internalType\": \"string\",           \"name\": \"\",           \"type\": \"string\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [],       \"name\": \"ticketCount\",       \"outputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"\",           \"type\": \"uint256\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [],       \"name\": \"ticketPrice\",       \"outputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"\",           \"type\": \"uint256\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"index\",           \"type\": \"uint256\"         }       ],       \"name\": \"tokenByIndex\",       \"outputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"\",           \"type\": \"uint256\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [         {           \"internalType\": \"address\",           \"name\": \"owner\",           \"type\": \"address\"         },         {           \"internalType\": \"uint256\",           \"name\": \"index\",           \"type\": \"uint256\"         }       ],       \"name\": \"tokenOfOwnerByIndex\",       \"outputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"\",           \"type\": \"uint256\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [],       \"name\": \"totalSupply\",       \"outputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"\",           \"type\": \"uint256\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [],       \"name\": \"transferFee\",       \"outputs\": [         {           \"internalType\": \"uint64\",           \"name\": \"\",           \"type\": \"uint64\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [         {           \"internalType\": \"address\",           \"name\": \"from\",           \"type\": \"address\"         },         {           \"internalType\": \"address\",           \"name\": \"to\",           \"type\": \"address\"         },         {           \"internalType\": \"uint256\",           \"name\": \"tokenId\",           \"type\": \"uint256\"         }       ],       \"name\": \"transferFrom\",       \"outputs\": [],       \"stateMutability\": \"nonpayable\",       \"type\": \"function\"     },     {       \"inputs\": [         {           \"internalType\": \"address\",           \"name\": \"newOwner\",           \"type\": \"address\"         }       ],       \"name\": \"transferOwnership\",       \"outputs\": [],       \"stateMutability\": \"nonpayable\",       \"type\": \"function\"     },     {       \"stateMutability\": \"payable\",       \"type\": \"receive\",       \"payable\": true     },     {       \"inputs\": [         {           \"internalType\": \"address\",           \"name\": \"to\",           \"type\": \"address\"         },         {           \"internalType\": \"string\",           \"name\": \"uri\",           \"type\": \"string\"         }       ],       \"name\": \"safeMint\",       \"outputs\": [],       \"stateMutability\": \"payable\",       \"type\": \"function\",       \"payable\": true     },     {       \"inputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"tokenId\",           \"type\": \"uint256\"         }       ],       \"name\": \"tokenURI\",       \"outputs\": [         {           \"internalType\": \"string\",           \"name\": \"\",           \"type\": \"string\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [         {           \"internalType\": \"bytes4\",           \"name\": \"interfaceId\",           \"type\": \"bytes4\"         }       ],       \"name\": \"supportsInterface\",       \"outputs\": [         {           \"internalType\": \"bool\",           \"name\": \"\",           \"type\": \"bool\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"_id\",           \"type\": \"uint256\"         }       ],       \"name\": \"getTicket\",       \"outputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"price\",           \"type\": \"uint256\"         },         {           \"internalType\": \"uint64\",           \"name\": \"resellTimes\",           \"type\": \"uint64\"         },         {           \"internalType\": \"bool\",           \"name\": \"availableForResell\",           \"type\": \"bool\"         },         {           \"internalType\": \"address\",           \"name\": \"seller\",           \"type\": \"address\"         },         {           \"internalType\": \"address\",           \"name\": \"owner\",           \"type\": \"address\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [         {           \"internalType\": \"address\",           \"name\": \"_ad\",           \"type\": \"address\"         }       ],       \"name\": \"getMoney\",       \"outputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"balance\",           \"type\": \"uint256\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [],       \"name\": \"getBalanceOfContract\",       \"outputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"\",           \"type\": \"uint256\"         }       ],       \"stateMutability\": \"view\",       \"type\": \"function\",       \"constant\": true     },     {       \"inputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"_id\",           \"type\": \"uint256\"         },         {           \"internalType\": \"uint256\",           \"name\": \"_newPrice\",           \"type\": \"uint256\"         }       ],       \"name\": \"offerTicketOnMarket\",       \"outputs\": [],       \"stateMutability\": \"nonpayable\",       \"type\": \"function\"     },     {       \"inputs\": [         {           \"internalType\": \"uint256\",           \"name\": \"_id\",           \"type\": \"uint256\"         }       ],       \"name\": \"buyTicketSecondary\",       \"outputs\": [],       \"stateMutability\": \"payable\",       \"type\": \"function\",       \"payable\": true     }   ]"
+    },
+    {
+        "id": "cb6fbf296cf8ec9c",
+        "type": "sender-account",
+        "name": "mantis1",
+        "ethereumClient": "41e930fe9f29b141",
+        "address": "0xDb7c83d499787E6b7660C961F8a9999E3C395AdE",
+        "managedByEthereumClient": true,
+        "transactionQueueSize": "100"
+    },
+    {
+        "id": "c058b466e00264ad",
+        "type": "sender-account",
+        "name": "TimMantis1",
+        "ethereumClient": "41e930fe9f29b141",
+        "address": "0xA9F25CC0c6C761868627d65Eb61FADC9eDfe7e33",
+        "managedByEthereumClient": true,
+        "transactionQueueSize": "100"
+    },
+    {
+        "id": "3e41d6c50f62968a",
+        "type": "sender-account",
+        "name": "mantis2",
+        "ethereumClient": "41e930fe9f29b141",
+        "address": "0x9199D9323b25BA171De6b9189201Bb322Ba12274",
+        "managedByEthereumClient": true,
+        "transactionQueueSize": "100"
+    },
+    {
+        "id": "41e930fe9f29b141",
+        "type": "ethereum-client",
+        "name": "TruffleDashboardMantis",
+        "url": "http://localhost:24012/rpc"
+    }
+]
